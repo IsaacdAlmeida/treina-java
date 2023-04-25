@@ -16,12 +16,11 @@ public class Livro {
   // método construtor
 
   Livro() {
-
+    
   }
 
-  Livro(String bookName, String bookDescription) {
-    this.bookName = bookName;
-    this.bookDescription = bookDescription;
+  Livro(Autor author) {
+    this.author = author;
   }
 
   // métodos

@@ -1,18 +1,17 @@
 public class RegraDeDesconto {
   public static void main(String[] args) {
-    Livro livro = new Livro();
-    livro.setBookPrice(60);
-    livro.setBookName("CursoRápido");
-    livro.setBookIsbn("129i129i131312i");
-    livro.setBookDescription("ótimo livro");
-
     Autor livroCursoRapido = new Autor();
 
     livroCursoRapido.setAuthorName("Isaac");
     livroCursoRapido.setAuthorEmail("isaac@gmail.com");
     livroCursoRapido.setAuthorCpf("191811929");
 
-    livro.setAuthor(livroCursoRapido);
+    Livro livro = new Livro(livroCursoRapido);
+
+    livro.setBookPrice(60);
+    livro.setBookName("CursoRápido");
+    livro.setBookIsbn("129i129i131312i");
+    livro.setBookDescription("ótimo livro");
 
     livro.showBookDetails();
 
