@@ -1,4 +1,4 @@
-public class Ebook extends Livro {
+public class Ebook extends Livro implements Promocional {
   private String marcaDagua;
 
   public String getMarcaDagua() {
@@ -18,7 +18,12 @@ public class Ebook extends Livro {
   }
 
   @Override
-  boolean applyDiscount(double porcentagem) {
+  public String gerarCodigoBarras() {
+    return this.getBookName() + " " + this.getBookPrice() + "EBOOK";
+  }
+
+  @Override
+  public boolean applyDiscount(double porcentagem) {
     if (porcentagem > 0.15) return false;
 
     double discount = this.getBookPrice() * porcentagem;

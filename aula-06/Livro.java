@@ -1,4 +1,4 @@
-public class Livro {
+public abstract class Livro implements Produto {
   // Modificador de acessos:
   // default
   // public
@@ -78,15 +78,7 @@ public class Livro {
     this.author = author;
   }
 
-  boolean applyDiscount(double porcentagem) {
-
-    if (porcentagem > 0.3)
-      return false;
-
-    this.bookPrice = this.bookPrice - (this.bookPrice * porcentagem);
-
-    return true;
-  }
+  // abstract boolean applyDiscount(double porcentagem);
 
   boolean hasAuthor() {
     return this.author != null;

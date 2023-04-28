@@ -6,12 +6,13 @@ public class RegraDeDesconto {
     livroCursoRapido.setAuthorEmail("isaac@gmail.com");
     livroCursoRapido.setAuthorCpf("191811929");
 
-    Livro livro = new Livro(livroCursoRapido);
+    LivroFisico livro = new LivroFisico();
 
     livro.setBookPrice(60);
     livro.setBookName("CursoRápido");
     livro.setBookIsbn("129i129i131312i");
     livro.setBookDescription("ótimo livro");
+    livro.setAuthor(livroCursoRapido);
 
     livro.showBookDetails();
 
