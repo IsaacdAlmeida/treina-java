@@ -1,3 +1,8 @@
+package abstratas;
+
+import entidades.Autor;
+import interfaces.Produto;
+
 public abstract class Livro implements Produto {
   // Modificador de acessos:
   // default
@@ -15,17 +20,17 @@ public abstract class Livro implements Produto {
 
   // método construtor
 
-  Livro() {
+  public Livro() {
     
   }
 
-  Livro(Autor author) {
+  public Livro(Autor author) {
     this.author = author;
   }
 
   // métodos
 
-  void showBookDetails() {
+  public void showBookDetails() {
     System.out.println("Detalhes do Livro: " + bookName);
     System.out.println("Nome: " + bookName);
     System.out.println("Descrição: " + bookDescription);
@@ -80,7 +85,7 @@ public abstract class Livro implements Produto {
 
   // abstract boolean applyDiscount(double porcentagem);
 
-  boolean hasAuthor() {
+  public boolean hasAuthor() {
     return this.author != null;
   }
 }

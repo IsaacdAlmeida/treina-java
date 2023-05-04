@@ -1,3 +1,6 @@
+package entidades;
+import abstratas.Livro;
+
 public class CarrinhoDeCompras {
   private double total;
 

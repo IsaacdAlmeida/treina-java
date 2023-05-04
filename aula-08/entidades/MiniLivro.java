@@ -1,3 +1,6 @@
+package entidades;
+import abstratas.Livro;
+
 public class MiniLivro extends Livro {
 
   @Override

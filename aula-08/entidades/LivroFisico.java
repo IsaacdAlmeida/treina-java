@@ -1,3 +1,7 @@
+package entidades;
+import abstratas.Livro;
+import interfaces.Promocional;
+
 public class LivroFisico extends Livro implements Promocional {
 
   // constructor

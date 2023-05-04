@@ -1,3 +1,6 @@
+import entidades.Autor;
+import entidades.LivroFisico;
+
 public class RegraDeDesconto {
   public static void main(String[] args) {
     Autor livroCursoRapido = new Autor();

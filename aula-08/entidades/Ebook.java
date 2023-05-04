@@ -1,3 +1,7 @@
+package entidades;
+import abstratas.Livro;
+import interfaces.Promocional;
+
 public class Ebook extends Livro implements Promocional {
   private String marcaDagua;
 
