@@ -7,6 +7,8 @@ public class CadastroDeLivros {
 
     MiniLivro miniJava = new MiniLivro();
 
+    miniJava.setBookPrice(10);
+
     System.out.println(miniJava);
     
   }

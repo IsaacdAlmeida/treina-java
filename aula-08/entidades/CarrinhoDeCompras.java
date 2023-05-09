@@ -1,8 +1,21 @@
 package entidades;
+
+import java.util.List;
+
 import abstratas.Livro;
+import interfaces.Produto;
 
 public class CarrinhoDeCompras {
   private double total;
+  private List<Produto> produtos;
+
+  public List<Produto> getProdutos() {
+    return produtos;
+  }
+
+  public void setProdutos(List<Produto> produtos) {
+    this.produtos = produtos;
+  }
 
   public double getTotal() {
     return total;
@@ -15,6 +28,8 @@ public class CarrinhoDeCompras {
   public void adicionaAoCarrinho(Livro livro) {
     System.out.println("Adicionado:" + livro);
     this.total += livro.getBookPrice();
+    
+    produtos.add(livro);
   }
 
   // public void adicionaAoCarrinho(Ebook ebook) {
