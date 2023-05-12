@@ -12,36 +12,38 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.livraria.treina.livrariatreina.model.Livro;
 import com.livraria.treina.livrariatreina.repository.LivroRepository;
 
 @RestController
+@RequestMapping("/livros")
 public class LivroController {
 
-  @PostMapping("/livros")
+  @PostMapping
   public ResponseEntity<Livro> cadastrarLivro(@RequestBody Livro livro) {
     return ResponseEntity
         .status(HttpStatus.CREATED)
         .body(livroRepository.save(livro));
   }
 
-  @GetMapping("/livros")
+  @GetMapping
   public ResponseEntity<List<Livro>> listarLivros() {
     return ResponseEntity
         .status(HttpStatus.OK)
         .body(livroRepository.findAll());
   }
 
-  @GetMapping("/livros/{id}")
+  @GetMapping("/{id}")
   public ResponseEntity<Optional<Livro>> listarLivrosPorId(@PathVariable("id") long id) {
     return ResponseEntity
         .status(HttpStatus.OK)
         .body(livroRepository.findById(id));
   }
 
-  @PutMapping("livros/{id}")
+  @PutMapping("/{id}")
   public ResponseEntity<Livro> atualizarLivro(@PathVariable("id") long id, @RequestBody Livro livroAtualizado) {
 
     Optional<Livro> livroEncontrado = livroRepository.findById(id);
@@ -65,7 +67,7 @@ public class LivroController {
     }
   }
 
-  @DeleteMapping("livros/{id}")
+  @DeleteMapping("/{id}")
   public ResponseEntity<Void> deletarLivro(@PathVariable("id") long id) {
     Optional<Livro> livroEncontrado = livroRepository.findById(id);
 
