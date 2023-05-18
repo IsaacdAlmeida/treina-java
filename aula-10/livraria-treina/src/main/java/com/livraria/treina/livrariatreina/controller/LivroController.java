@@ -1,9 +1,12 @@
 package com.livraria.treina.livrariatreina.controller;
 
-import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort.Direction;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -30,10 +33,12 @@ public class LivroController {
   }
 
   @GetMapping
-  public ResponseEntity<List<Livro>> listarLivros() {
+  public ResponseEntity<Page<Livro>> listarLivros(
+      @PageableDefault(size = 3, page = 0, sort = "nome", direction = Direction.ASC)
+      Pageable paginacao) {
     return ResponseEntity
         .status(HttpStatus.OK)
-        .body(livroRepository.findAll());
+        .body(livroRepository.findAll(paginacao));
   }
 
   @GetMapping("/{id}")
@@ -58,12 +63,12 @@ public class LivroController {
       Livro updatedLivro = livroRepository.save(livro);
 
       return ResponseEntity
-        .status(HttpStatus.OK)
-        .body(updatedLivro);
+          .status(HttpStatus.OK)
+          .body(updatedLivro);
     } else {
       return ResponseEntity
-        .status(HttpStatus.NOT_FOUND)
-        .build();
+          .status(HttpStatus.NOT_FOUND)
+          .build();
     }
   }
 
@@ -71,20 +76,18 @@ public class LivroController {
   public ResponseEntity<Void> deletarLivro(@PathVariable("id") long id) {
     Optional<Livro> livroEncontrado = livroRepository.findById(id);
 
-    if(livroEncontrado.isPresent()) {
+    if (livroEncontrado.isPresent()) {
       livroRepository.deleteById(id);
       return ResponseEntity
-        .status(HttpStatus.NO_CONTENT)
-        .build();
+          .status(HttpStatus.NO_CONTENT)
+          .build();
     } else {
       return ResponseEntity
-        .status(HttpStatus.NOT_FOUND)
-        .build();
+          .status(HttpStatus.NOT_FOUND)
+          .build();
     }
   }
 
   @Autowired
   private LivroRepository livroRepository;
 }
-
-

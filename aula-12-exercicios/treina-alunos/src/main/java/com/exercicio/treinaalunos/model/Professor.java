@@ -1,14 +1,14 @@
-package com.livraria.treina.livrariatreina.model;
+package com.exercicio.treinaalunos.model;
 
-import java.time.LocalDate;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
+import java.util.List;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -16,23 +16,21 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity(name = "autores")
-public class Autor {
+@Entity(name = "professores")
+public class Professor {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private long idAutor;
-
+  private long idProfessor;
+  
   @Column(nullable = false)
   private String nome;
 
   @Column(unique = true)
   private String email;
+  private double valorHora;
 
-  @Column(unique = true)
-  private String cpf;
+  @OneToMany(mappedBy = "professor")
+  private List<Turma> turmas;
 
-  @JsonFormat(pattern = "dd/MM/yyyy")
-  private LocalDate dataNascimento;
-
-  private Boolean temPremio;
+  // turmas: List<turma>
 }

@@ -11,3 +11,8 @@ public class LivrariaTreinaApplication {
 	}
 
 }
+
+
+// ideditora
+//nomefantasita
+//razao social

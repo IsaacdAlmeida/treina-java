@@ -39,6 +39,17 @@ public class AutorController {
     return ResponseEntity.status(HttpStatus.OK).body(autorRepository.findById(id));
   }
 
+  @GetMapping("/nome/{nome}")
+  public ResponseEntity<Optional<List<Autor>>> listarAutorPorNome(@PathVariable("nome") String nome) {
+    return ResponseEntity.status(HttpStatus.OK).body(autorRepository.findByNome(nome));
+  }
+
+  @GetMapping("/email/{email}")
+  public ResponseEntity<Optional<Autor>> listarAutorPorEmail(@PathVariable("email") String email) {
+    return ResponseEntity.status(HttpStatus.OK).body(autorRepository.findByEmail(email));
+  }
+
+
   @PutMapping
   public ResponseEntity<Autor> atualizarAutor(@RequestBody Autor autor) {
     return ResponseEntity.status(HttpStatus.OK).body(autorRepository.save(autor));
