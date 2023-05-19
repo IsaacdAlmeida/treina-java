@@ -46,7 +46,6 @@ public class TurmaController {
   public void deletarTurma(@PathVariable("id") long id) {
     turmaRepository.deleteById(id);
   }
-  
 
   @Autowired
   private TurmaRepository turmaRepository;

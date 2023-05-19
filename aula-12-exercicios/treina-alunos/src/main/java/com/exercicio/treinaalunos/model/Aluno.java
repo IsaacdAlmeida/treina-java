@@ -5,12 +5,12 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
-import jakarta.persistence.Column;
+import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -24,20 +24,14 @@ public class Aluno {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private long idAluno;
 
-  @Column(nullable = false)
-  private String nome;
-
-  @Column(unique = true)
-  private String cpf;
-
   @JsonFormat(pattern = "dd/MM/yyyy")
   private LocalDate dataNascimento;
   
-  @Column(unique = true)
-  private String email;
+  private boolean pcd;
 
-  private Boolean pcd;
-
-  @ManyToMany(mappedBy = "alunos")
+  @OneToMany
   private List<Turma> turmas;
+
+  @Embedded
+  private Usuario usuario;
 }

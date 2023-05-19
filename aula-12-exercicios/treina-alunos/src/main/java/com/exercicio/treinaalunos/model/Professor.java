@@ -3,7 +3,7 @@ package com.exercicio.treinaalunos.model;
 
 import java.util.List;
 
-import jakarta.persistence.Column;
+import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -22,15 +22,11 @@ public class Professor {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private long idProfessor;
   
-  @Column(nullable = false)
-  private String nome;
-
-  @Column(unique = true)
-  private String email;
   private double valorHora;
 
-  @OneToMany(mappedBy = "professor")
+  @OneToMany
   private List<Turma> turmas;
 
-  // turmas: List<turma>
+  @Embedded
+  private Usuario usuario;
 }
